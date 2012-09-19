@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Cwd;
+
+my @files = glob('*');
+
+for my $file (@files) {
+    next if $file eq 'install' or $file =~ /^\./;
+
+    my $dotfile = "$ENV{HOME}/.${file}";
+    my $oldfile = getcwd() . "/${file}";
+
+    if (-e $dotfile) {
+        print "$dotfile exists already. Skipping.\n";
+    }
+    else {
+        if (eval { symlink $oldfile, $dotfile; 1 }) {
+            print "Created symlink $oldfile -> $dotfile\n";
+        }
+    }
+}
