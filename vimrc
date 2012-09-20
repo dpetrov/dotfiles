@@ -108,6 +108,9 @@ nnoremap \tn :set invnumber number?<CR>
 nmap <F8> \tn
 imap <F8> <C-O>\tn
 
+" w!! if root privileges are required
+cmap w!! %!sudo tee > /dev/null %
+
 "==========================================================
 " this section for memos...
 
