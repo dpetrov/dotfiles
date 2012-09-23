@@ -3,10 +3,12 @@ use strict;
 use warnings;
 use Cwd;
 
-my @files = glob('*');
+my @files  = glob('*');
+my @ignore = ('README.md', 'install');
 
 for my $file (@files) {
-    next if $file eq 'install' or $file =~ /^\./;
+    next if $file =~ /^\./; # ignore dot files
+    next if grep { $file eq $_ } @ignore;
 
     my $dotfile = "$ENV{HOME}/.${file}";
     my $oldfile = getcwd() . "/${file}";
