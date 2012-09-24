@@ -2,6 +2,7 @@
 set nocompatible
 syntax on
 set term=xterm-256color
+set t_Co=256
 colorscheme Monokai
 
 set backspace=indent,eol,start
