@@ -1,3 +1,10 @@
+" .vimrc
+set encoding=utf-8
+
+" load up pathogen and all bundles
+call pathogen#infect()
+call pathogen#helptags()
+
 " this section for basic stuff
 set nocompatible
 syntax on
@@ -122,3 +129,24 @@ nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
 
 " For global replace
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
+" Enable ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" set leader key to comma
+let mapleader = ","
+
+" ctrlp config
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_max_height = 30
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window_reversed = 0
+
+" use silver searcher for ctrlp
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+" map Silver Searcher
+map <leader>a :Ag!<space>
+
+" search for word under cursor with Silver Searcher
+map <leader>A :Ag! "<C-r>=expand('<cword>')<CR>"
